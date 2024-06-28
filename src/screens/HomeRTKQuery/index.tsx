@@ -44,7 +44,28 @@ export default function HomeRTKQuery() {
       },
     } = event;
 
-    addCharger({ latitude, longitude });
+    const newCharger: ICharger = {
+      id: 1,
+      name: "Ann Arbor City Hall",
+      chargePoint: "",
+      price: 0.0,
+      time: "O",
+      parking: "Parking: Free",
+      type: "Level 1",
+      address: {
+        street: `${latitude} / ${longitude}`,
+        city: "",
+        number: 0,
+        country: "",
+      },
+      location: {
+        latitude,
+        longitude,
+      },
+      available: 0,
+    };
+
+    addCharger(newCharger);
 
     mapViewRef.current?.animateToRegion({
       latitude,
@@ -65,8 +86,6 @@ export default function HomeRTKQuery() {
   if (isLoading) {
     return <Loading />;
   }
-
-  console.log(isError);
 
   if (isError) {
     return <CatchError error={error} />;

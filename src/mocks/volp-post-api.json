@@ -179,6 +179,106 @@
         "longitude": -51.18663847
       },
       "available": 1
+    },
+    {
+      "id": 1,
+      "name": "Ann Arbor City Hall",
+      "chargePoint": "",
+      "price": 0,
+      "time": "O",
+      "parking": "Parking: Free",
+      "type": "Level 1",
+      "address": {
+        "street": "-29.911457401157797 / -51.183187076227746",
+        "city": "",
+        "number": 0,
+        "country": ""
+      },
+      "location": {
+        "latitude": -29.911457401157797,
+        "longitude": -51.183187076227746
+      },
+      "available": 0
+    },
+    {
+      "id": 1,
+      "name": "Ann Arbor City Hall",
+      "chargePoint": "",
+      "price": 0,
+      "time": "O",
+      "parking": "Parking: Free",
+      "type": "Level 1",
+      "address": {
+        "street": "-29.911543786746996 / -51.18217138502862",
+        "city": "",
+        "number": 0,
+        "country": ""
+      },
+      "location": {
+        "latitude": -29.911543786746996,
+        "longitude": -51.18217138502862
+      },
+      "available": 0
+    },
+    {
+      "id": 1,
+      "name": "Ann Arbor City Hall",
+      "chargePoint": "",
+      "price": 0,
+      "time": "O",
+      "parking": "Parking: Free",
+      "type": "Level 1",
+      "address": {
+        "street": "-29.909262814420345 / -51.18104543083011",
+        "city": "",
+        "number": 0,
+        "country": ""
+      },
+      "location": {
+        "latitude": -29.909262814420345,
+        "longitude": -51.18104543083011
+      },
+      "available": 0
+    },
+    {
+      "id": 1,
+      "name": "Ann Arbor City Hall",
+      "chargePoint": "",
+      "price": 0,
+      "time": "O",
+      "parking": "Parking: Free",
+      "type": "Level 1",
+      "address": {
+        "street": "-29.907632107905837 / -51.18727988097149",
+        "city": "",
+        "number": 0,
+        "country": ""
+      },
+      "location": {
+        "latitude": -29.907632107905837,
+        "longitude": -51.18727988097149
+      },
+      "available": 0
+    },
+    {
+      "id": 1,
+      "name": "Ann Arbor City Hall",
+      "chargePoint": "",
+      "price": 0,
+      "time": "O",
+      "parking": "Parking: Free",
+      "type": "Level 1",
+      "address": {
+        "street": "-29.911894842192094 / -51.18560013801524",
+        "city": "",
+        "number": 0,
+        "country": ""
+      },
+      "location": {
+        "latitude": -29.911894842192094,
+        "longitude": -51.18560013801524
+      },
+      "available": 0
     }
   ],
   "add-charger": [
