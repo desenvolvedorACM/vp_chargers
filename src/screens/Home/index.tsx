@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { StyleSheet } from "react-native";
 import MapView, {
   MapPressEvent,
@@ -6,7 +6,7 @@ import MapView, {
   MarkerPressEvent,
   Region,
 } from "react-native-maps";
-import { Text, YStack } from "tamagui";
+import { YStack } from "tamagui";
 import CustomBottomSheet from "../../components/CustomBottomSheet";
 import BottomSheet from "@gorhom/bottom-sheet";
 
@@ -23,7 +23,7 @@ export default function Home() {
   const queryClient = useQueryClient();
   const mapViewRef = useRef<MapView>(null);
   const bottomSheetRef = useRef<BottomSheet>(null);
-
+  
   const INITIAL_REGION = {
     latitude: -29.9109446,
     longitude: -51.18435968,
@@ -80,7 +80,7 @@ export default function Home() {
   if (isLoading) {
     return <Loading />;
   }
-
+  
   return (
     <YStack f={1}>
       <MapView

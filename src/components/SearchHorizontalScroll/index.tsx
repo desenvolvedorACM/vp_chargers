@@ -11,6 +11,7 @@ import {
   ZapOff,
   BatteryFull,
   BatteryCharging,
+  Zap as ZapFast
 } from "@tamagui/lucide-icons";
 
 // import Icon from "@expo/vector-icons/Feather";
@@ -20,6 +21,7 @@ import { ISearchIcon } from "../../models";
 
 const tIcons: any = {
   Search: <Search size="$2" />,
+  Zap: <ZapFast size="$2" />,
   Checked: <Checked size="$2" />,
   Dinner: <Dinner size="$2" />,
   Fast: <Fast size="$2" />,
@@ -32,7 +34,11 @@ const tIcons: any = {
   BatteryCharging: <BatteryCharging size="$2" />,
 };
 
-export default function SearchHorizontalScroll() {
+type Props = {
+  onPress: () => void
+}
+
+export default function SearchHorizontalScroll({ onPress}: Props) {
   return (
     <ScrollView w="100%" mt="$2" horizontal>
       {searchIcons.map((item: ISearchIcon, idx: number) => {
@@ -40,7 +46,7 @@ export default function SearchHorizontalScroll() {
           <YStack p="$2" mt="$2" key={idx} ai="center">
             <XStack>
               <Circle
-                onPress={() => alert("Do something")}
+                onPress={onPress}
                 w={55}
                 h={55}
                 ai={"center"}
