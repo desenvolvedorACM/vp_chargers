@@ -8,22 +8,22 @@ import MapView, {
 } from "react-native-maps";
 import { YStack } from "tamagui";
 import CustomBottomSheet from "../../components/CustomBottomSheet";
-import BottomSheet from "@gorhom/bottom-sheet";
 
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { fetchData, addChargers } from "../../services";
-import { ICharger } from "../../models";
+import { IAddress, ICharger } from "../../models";
 
 import icUnAvailable from "../../assets/images/unavailable.png";
 import icAvailable from "../../assets/images/available.png";
-import CustomCalloutMap from "../../components/CustomCalloutMap";
+// import CustomCalloutMap from "../../components/CustomCalloutMap";
 import { Loading } from "../../components/Loading";
 
 export default function Home() {
   const queryClient = useQueryClient();
   const mapViewRef = useRef<MapView>(null);
-  const bottomSheetRef = useRef<BottomSheet>(null);
-  
+  const [isOpenEd, setIsOpenEd] = useState(false);
+  const [selChargerAddress, setSelChargerAddress] = useState<IAddress>();
+
   const INITIAL_REGION = {
     latitude: -29.9109446,
     longitude: -51.18435968,
@@ -65,14 +65,6 @@ export default function Home() {
     });
   }
 
-  const onCloseBottomSheet = () => {
-    bottomSheetRef.current?.close();
-  };
-
-  const onExpandBottomSheet = () => {
-    bottomSheetRef.current?.expand();
-  };
-
   // useEffect(() => {
   //   focusMap(-29.9033668, -51.180447);
   // }, []);
@@ -80,7 +72,7 @@ export default function Home() {
   if (isLoading) {
     return <Loading />;
   }
-  
+
   return (
     <YStack f={1}>
       <MapView
@@ -90,7 +82,6 @@ export default function Home() {
         pitchEnabled
         style={StyleSheet.absoluteFill}
         initialRegion={INITIAL_REGION}
-        onPress={addMarkers}
       >
         {chargers?.map((data: ICharger, idx: number) => {
           return (
@@ -98,7 +89,10 @@ export default function Home() {
               key={idx}
               coordinate={data?.location}
               image={data.available ? icAvailable : icUnAvailable}
-              onPress={(event: MarkerPressEvent) => {
+              onPress={(event: MarkerPressEvent) => {               
+                setIsOpenEd(!isOpenEd);
+                setSelChargerAddress(data.address);
+
                 const { latitude, longitude } = event.nativeEvent.coordinate;
                 const region: Region = {
                   latitude,
@@ -109,20 +103,14 @@ export default function Home() {
 
                 mapViewRef.current?.animateToRegion(region);
               }}
-            >
-              <CustomCalloutMap
-                name={data.name}
-                address={`${data.address.street}, ${data.address.number}, ${data.address.city}`}
-                chargePoint={`${data.chargePoint}`}
-                price={`${data.price}`}
-                parking={data.parking}
-                type={data.type}
-              />
-            </Marker>
+            />
           );
         })}
       </MapView>
-      <CustomBottomSheet bottomSheetRef={bottomSheetRef} />
+      <CustomBottomSheet
+         isOpenEd={isOpenEd}
+         selectedAddress={selChargerAddress}
+      />
     </YStack>
   );
 }

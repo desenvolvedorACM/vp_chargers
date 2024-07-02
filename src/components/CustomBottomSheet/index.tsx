@@ -1,18 +1,21 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { Button, Separator, Text, YStack, Input, XStack } from "tamagui";
 import SearchHorizontalScroll from "../SearchHorizontalScroll";
 import { Search } from "@tamagui/lucide-icons";
+import { IAddress } from "../../models";
 
 type Props = {
-  bottomSheetRef: any;
+  isOpenEd: boolean;
+  selectedAddress: IAddress | undefined;
 };
 
-export default function CustomBottomSheet({ bottomSheetRef }: Props) {
-  const snapPoints = useMemo(() => ["35%", "50%", "90%"], []);
+export default function CustomBottomSheet({ selectedAddress, isOpenEd }: Props) {
+  const snapPoints = useMemo(() => ["5%", "35%", "50%", "90%"], []);
+  const bottomSheetRef = useRef<BottomSheet>(null);
 
   return (
-    <BottomSheet index={0} ref={bottomSheetRef} snapPoints={snapPoints}>
+    <BottomSheet index={isOpenEd ? 2 : 0} ref={bottomSheetRef} snapPoints={snapPoints}>
       <YStack p="$3" bg="$white">
         <XStack
           borderRadius="$3"
@@ -31,8 +34,16 @@ export default function CustomBottomSheet({ bottomSheetRef }: Props) {
           />
         </XStack>
 
-        <SearchHorizontalScroll />
+        <SearchHorizontalScroll
+          onPress={() => alert("Todo something here...")}
+        />
 
+        <Separator marginVertical={10} />
+
+        <Text>{selectedAddress?.street}</Text>
+        <Text>
+          {selectedAddress?.city}- {selectedAddress?.country}
+        </Text>
         <Separator marginVertical={10} />
 
         <Button borderRadius="$10" bg="#e5fc0a" mt={10}>

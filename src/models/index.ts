@@ -16,7 +16,7 @@ export interface ICharger {
     available: number;
 }
 
-interface IAddress {
+export interface IAddress {
     street: string;
     city: string;
     number: number;

@@ -1,4 +1,5 @@
 import { ICharger, ILatLng, IResponseChargers } from "../models";
+
 const data: ICharger[] = [
     {
         "id": 1,
@@ -9,7 +10,7 @@ const data: ICharger[] = [
         "parking": "Parking: Free",
         "type": "Level 1",
         "address": {
-            "street": "R. Mathias Velho",
+            "street": "Av.Rio grande 12",
             "city": "Canoas",
             "number": 235,
             "country": "Brazil"
@@ -29,7 +30,7 @@ const data: ICharger[] = [
         "parking": "Parking: Free",
         "type": "Level 2",
         "address": {
-            "street": "R. Mathias Velho",
+            "street": "R.Marcio dias, 242",
             "city": "Canoas",
             "number": 235,
             "country": "Brazil"
@@ -49,7 +50,7 @@ const data: ICharger[] = [
         "parking": "Parking: Free",
         "type": "Level 2",
         "address": {
-            "street": "R. Mathias Velho",
+            "street": "Rua das corujas",
             "city": "Canoas",
             "number": 235,
             "country": "Brazil"
@@ -89,7 +90,7 @@ const data: ICharger[] = [
         "parking": "Parking: Free",
         "type": "Level 2",
         "address": {
-            "street": "R. Mathias Velho",
+            "street": "Rua Visconde 12",
             "city": "Canoas",
             "number": 200,
             "country": "Brazil"
@@ -109,7 +110,7 @@ const data: ICharger[] = [
         "parking": "Parking: Free",
         "type": "Level 2",
         "address": {
-            "street": "R. Mathias Velho",
+            "street": "R. Vencia, 34",
             "city": "Canoas",
             "number": 200,
             "country": "Brazil"
@@ -129,7 +130,7 @@ const data: ICharger[] = [
         "parking": "Parking: Free",
         "type": "Level 2",
         "address": {
-            "street": "R. Mathias Velho",
+            "street": "R. Morunbi",
             "city": "Canoas",
             "number": 200,
             "country": "Brazil"
@@ -149,7 +150,7 @@ const data: ICharger[] = [
         "parking": "Parking: Free",
         "type": "Level 2",
         "address": {
-            "street": "R. Mathias Velho",
+            "street": "Beco dos fagundes",
             "city": "Canoas",
             "number": 200,
             "country": "Brazil"
@@ -169,7 +170,7 @@ const data: ICharger[] = [
         "parking": "Parking: Free",
         "type": "Level 2",
         "address": {
-            "street": "R. Mathias Velho",
+            "street": "Av. Farroupilha",
             "city": "Canoas",
             "number": 200,
             "country": "Brazil"
@@ -179,8 +180,28 @@ const data: ICharger[] = [
             "longitude": -51.18663847
         },
         "available": 1
+    },
+    {
+        "id": 10,
+        "name": "Ann Arbor City Hall",
+        "chargePoint": "",
+        "price": 0,
+        "time": "O",
+        "parking": "Parking: Free",
+        "type": "Level 1",
+        "address": {
+            "street": "Rua C (Toda)",
+            "city": "Canoas",
+            "number": 23,
+            "country": "Brazil"
+        },
+        "location": {
+            "latitude": -29.911894842192094,
+            "longitude": -51.18560013801524
+        },
+        "available": 0
     }
-];
+]
 
 export async function _fetchChargers(): Promise<IResponseChargers[]> {
     let result: IResponseChargers;
@@ -224,7 +245,7 @@ export async function addChargers({ latitude, longitude }: ILatLng): Promise<ICh
             latitude,
             longitude,
         },
-        available: 0,
+        available: 1,
     };
 
     data.push(newCharger);
